@@ -1,4 +1,4 @@
-{
+const client_manifest = {
   "node_modules/nuxt/dist/app/entry.mjs": {
     "resourceType": "script",
     "module": true,
@@ -86,4 +86,7 @@
     "file": "entry.66c287a7.css",
     "src": "node_modules/nuxt/dist/app/entry.css"
   }
-}
+};
+
+export { client_manifest as default };
+//# sourceMappingURL=client.manifest.mjs.map

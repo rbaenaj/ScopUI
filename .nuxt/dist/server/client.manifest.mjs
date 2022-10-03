@@ -6,7 +6,7 @@ export default {
     "src": "node_modules/nuxt/dist/app/entry.mjs",
     "isEntry": true,
     "dynamicImports": [
-      "virtual:nuxt:C:/Users/baena/source/repos/ScopFix/SCOP/ScopUI/.nuxt/error-component.mjs"
+      "virtual:nuxt:C:/Users/baena/Source/Repos/rbaenaj/ScopUI/.nuxt/error-component.mjs"
     ],
     "css": [
       "entry.66c287a7.css"
@@ -16,11 +16,11 @@ export default {
     "file": "entry.66c287a7.css",
     "resourceType": "style"
   },
-  "virtual:nuxt:C:/Users/baena/source/repos/ScopFix/SCOP/ScopUI/.nuxt/error-component.mjs": {
+  "virtual:nuxt:C:/Users/baena/Source/Repos/rbaenaj/ScopUI/.nuxt/error-component.mjs": {
     "resourceType": "script",
     "module": true,
     "file": "error-component.73bfd711.mjs",
-    "src": "virtual:nuxt:C:/Users/baena/source/repos/ScopFix/SCOP/ScopUI/.nuxt/error-component.mjs",
+    "src": "virtual:nuxt:C:/Users/baena/Source/Repos/rbaenaj/ScopUI/.nuxt/error-component.mjs",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs"
@@ -71,15 +71,15 @@ export default {
     "file": "error-500.08851880.css",
     "resourceType": "style"
   },
-  "node_modules/@nuxt/ui-templates/dist/templates/error-500.css": {
-    "resourceType": "style",
-    "file": "error-500.08851880.css",
-    "src": "node_modules/@nuxt/ui-templates/dist/templates/error-500.css"
-  },
   "node_modules/@nuxt/ui-templates/dist/templates/error-404.css": {
     "resourceType": "style",
     "file": "error-404.7729cee9.css",
     "src": "node_modules/@nuxt/ui-templates/dist/templates/error-404.css"
+  },
+  "node_modules/@nuxt/ui-templates/dist/templates/error-500.css": {
+    "resourceType": "style",
+    "file": "error-500.08851880.css",
+    "src": "node_modules/@nuxt/ui-templates/dist/templates/error-500.css"
   },
   "node_modules/nuxt/dist/app/entry.css": {
     "resourceType": "style",

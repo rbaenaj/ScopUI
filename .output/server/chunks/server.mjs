@@ -1,18 +1,30 @@
-import require$$0 from "@vue/compiler-dom";
-import require$$1 from "@vue/runtime-dom";
-import { $fetch } from "ohmyfetch";
-import { joinURL, hasProtocol, isEqual, parseURL, parseQuery } from "ufo";
-import { useRuntimeConfig as useRuntimeConfig$1 } from "#internal/nitro";
-import { createHooks } from "hookable";
-import { getContext } from "unctx";
-import "destr";
-import { createError as createError$1, sendRedirect } from "h3";
-import defu from "defu";
-import { config, library } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { far } from "@fortawesome/free-regular-svg-icons";
-import { ssrRenderSuspense, ssrRenderComponent, ssrRenderAttrs, ssrInterpolate, ssrRenderStyle, ssrRenderList } from "@vue/server-renderer";
+import require$$0 from 'unenv/runtime/mock/proxy';
+import { r as require$$1, s as serverRenderer } from './renderer.mjs';
+import { $fetch } from 'ohmyfetch';
+import { joinURL, hasProtocol, isEqual, parseURL, parseQuery } from 'ufo';
+import { createHooks } from 'hookable';
+import { getContext } from 'unctx';
+import { createError as createError$1, sendRedirect } from 'h3';
+import defu from 'defu';
+import { config, library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { a as useRuntimeConfig$1 } from './node-server.mjs';
+import 'stream';
+import 'node-fetch-native/polyfill';
+import 'http';
+import 'https';
+import 'destr';
+import 'radix3';
+import 'unenv/runtime/fetch/index';
+import 'scule';
+import 'ohash';
+import 'unstorage';
+import 'fs';
+import 'pathe';
+import 'url';
+
 var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
 var vue_cjs_prod = {};
 var shared_cjs_prod = {};
@@ -2416,15 +2428,6 @@ const showError = (_err) => {
   }
   return err;
 };
-const clearError = async (options = {}) => {
-  const nuxtApp = useNuxtApp();
-  const error = useError();
-  nuxtApp.callHook("app:error:cleared", options);
-  if (options.redirect) {
-    await nuxtApp.$router.replace(options.redirect);
-  }
-  error.value = null;
-};
 const createError = (err) => {
   const _err = createError$1(err);
   _err.__nuxt_error = true;
@@ -2578,7 +2581,6 @@ function useHead(meta) {
   const resolvedMeta = isFunction_1(meta) ? vue_cjs_prod.computed(meta) : meta;
   useNuxtApp()._useHead(resolvedMeta);
 }
-const styles = "";
 const preload = defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.mixin({
     beforeCreate() {
@@ -3278,7 +3280,7 @@ const node_modules_nuxt_dist_app_plugins_router_mjs_PJLmOmdFeM = defineNuxtPlugi
     hooks[hook].push(guard);
     return () => hooks[hook].splice(hooks[hook].indexOf(guard), 1);
   };
-  const baseURL2 = useRuntimeConfig().app.baseURL;
+  useRuntimeConfig().app.baseURL;
   const route = vue_cjs_prod.reactive(getRouteFromPath(initialURL));
   async function handleNavigation(url, replace) {
     try {
@@ -3312,8 +3314,8 @@ const node_modules_nuxt_dist_app_plugins_router_mjs_PJLmOmdFeM = defineNuxtPlugi
     isReady: () => Promise.resolve(),
     options: {},
     install: () => Promise.resolve(),
-    push: (url) => handleNavigation(url, false),
-    replace: (url) => handleNavigation(url, true),
+    push: (url) => handleNavigation(url),
+    replace: (url) => handleNavigation(url),
     back: () => window.history.go(-1),
     go: (delta) => window.history.go(delta),
     forward: () => window.history.go(1),
@@ -3413,7 +3415,7 @@ const _sfc_main$5 = {
   __name: "nuxt-root",
   __ssrInlineRender: true,
   setup(__props) {
-    const ErrorComponent = vue_cjs_prod.defineAsyncComponent(() => import("./_nuxt/error-component.a6e8379b.js"));
+    const ErrorComponent = vue_cjs_prod.defineAsyncComponent(() => import('./error-component.a6e8379b.mjs'));
     const nuxtApp = useNuxtApp();
     vue_cjs_prod.provide("_route", useRoute());
     nuxtApp.hooks.callHookWith((hooks) => hooks.map((hook) => hook()), "vue:setup");
@@ -3426,12 +3428,12 @@ const _sfc_main$5 = {
     });
     return (_ctx, _push, _parent, _attrs) => {
       const _component_App = vue_cjs_prod.resolveComponent("App");
-      ssrRenderSuspense(_push, {
+      serverRenderer.exports.ssrRenderSuspense(_push, {
         default: () => {
           if (vue_cjs_prod.unref(error)) {
-            _push(ssrRenderComponent(vue_cjs_prod.unref(ErrorComponent), { error: vue_cjs_prod.unref(error) }, null, _parent));
+            _push(serverRenderer.exports.ssrRenderComponent(vue_cjs_prod.unref(ErrorComponent), { error: vue_cjs_prod.unref(error) }, null, _parent));
           } else {
-            _push(ssrRenderComponent(_component_App, null, null, _parent));
+            _push(serverRenderer.exports.ssrRenderComponent(_component_App, null, null, _parent));
           }
         },
         _: 1
@@ -3445,7 +3447,6 @@ _sfc_main$5.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("node_modules/nuxt/dist/app/components/nuxt-root.vue");
   return _sfc_setup$5 ? _sfc_setup$5(props, ctx) : void 0;
 };
-const ScopNodeX_vue_vue_type_style_index_0_lang = "";
 const _sfc_main$4 = {
   __name: "ScopNodeX",
   __ssrInlineRender: true,
@@ -3457,13 +3458,13 @@ const _sfc_main$4 = {
     return (_ctx, _push, _parent, _attrs) => {
       const _component_font_awesome_icon = vue_cjs_prod.resolveComponent("font-awesome-icon");
       const _component_spam = vue_cjs_prod.resolveComponent("spam");
-      _push(`<div${ssrRenderAttrs(vue_cjs_prod.mergeProps({ class: "nodex" }, _attrs))}><div class="header_tab">`);
-      _push(ssrRenderComponent(_component_font_awesome_icon, { icon: ["fas", "fa-chevron-circle-right"] }, null, _parent));
-      _push(` [${ssrInterpolate(__props.intervention.codigo)}] `);
-      _push(ssrRenderComponent(_component_spam, null, {
+      _push(`<div${serverRenderer.exports.ssrRenderAttrs(vue_cjs_prod.mergeProps({ class: "nodex" }, _attrs))}><div class="header_tab">`);
+      _push(serverRenderer.exports.ssrRenderComponent(_component_font_awesome_icon, { icon: ["fas", "fa-chevron-circle-right"] }, null, _parent));
+      _push(` [${serverRenderer.exports.ssrInterpolate(__props.intervention.codigo)}] `);
+      _push(serverRenderer.exports.ssrRenderComponent(_component_spam, null, {
         default: vue_cjs_prod.withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`${ssrInterpolate(__props.intervention.bloqueFuncional)}`);
+            _push2(`${serverRenderer.exports.ssrInterpolate(__props.intervention.bloqueFuncional)}`);
           } else {
             return [
               vue_cjs_prod.createTextVNode(vue_cjs_prod.toDisplayString(__props.intervention.bloqueFuncional), 1)
@@ -3473,32 +3474,32 @@ const _sfc_main$4 = {
         _: 1
       }, _parent));
       _push(`</div><div class="node_pad"><div class="header_dependencies">`);
-      _push(ssrRenderComponent(_component_font_awesome_icon, {
+      _push(serverRenderer.exports.ssrRenderComponent(_component_font_awesome_icon, {
         icon: ["fas", "fa-upload"],
         size: "xs"
       }, null, _parent));
       _push(`00 `);
-      _push(ssrRenderComponent(_component_font_awesome_icon, {
+      _push(serverRenderer.exports.ssrRenderComponent(_component_font_awesome_icon, {
         style: { "color": "firebrick" },
         icon: ["fas", "fa-download"],
         size: "xs"
       }, null, _parent));
-      _push(`00\xA0 </div><div class="pad_header"><div class="medium_title_gray">${ssrInterpolate(__props.intervention.ambito)}</div><div class="main_title_gray">${ssrInterpolate(__props.intervention.nombre)}</div></div><div class="pad_lowleft_corner">`);
-      _push(ssrRenderComponent(_component_font_awesome_icon, {
+      _push(`00\xA0 </div><div class="pad_header"><div class="medium_title_gray">${serverRenderer.exports.ssrInterpolate(__props.intervention.ambito)}</div><div class="main_title_gray">${serverRenderer.exports.ssrInterpolate(__props.intervention.nombre)}</div></div><div class="pad_lowleft_corner">`);
+      _push(serverRenderer.exports.ssrRenderComponent(_component_font_awesome_icon, {
         class: "pad_lowleft_icon",
         icon: ["fas", "fa-caret-down"],
         size: "xl"
       }, null, _parent));
       _push(`</div><div class="info_table"><table><tbody><tr><th class="info_table_col1">`);
-      _push(ssrRenderComponent(_component_font_awesome_icon, {
+      _push(serverRenderer.exports.ssrRenderComponent(_component_font_awesome_icon, {
         class: "info_table_icon",
         icon: ["fas", "fa-euro-sign"]
       }, null, _parent));
-      _push(`</th><td class="info_table_td" style="${ssrRenderStyle({ color: __props.intervention.gastoTP > 100 ? "firebrick" : "" })}">${ssrInterpolate(parseFloat(__props.intervention.gastoTP).toFixed(0))}%</td><td class="bar_craddle bar_width"><div class="bar_indicator" style="${ssrRenderStyle({ backgroundColor: Math.abs(__props.intervention.rendimientoTP) < __props.intervention.desviacionMaxima ? "#6176D4" : __props.intervention.rendimiento > 1 ? "darkgreen" : "firebrick", width: (__props.intervention.gastoTP > 100 ? 100 : __props.intervention.gastoTP) + "%" })}">\xA0</div><div class="bar_overflow" style="${ssrRenderStyle({ width: (__props.intervention.gastoTP > 100 ? (__props.intervention.gastoTP - 100) / __props.intervention.gastoTP * 100 : 0) + "%" })}">\xA0</div></td><td class="bar_craddle" style="${ssrRenderStyle({ "background-color": "#888" })}"><div class="bar_vindicator" style="${ssrRenderStyle({ height: Math.abs(__props.intervention.rendimientoTP) * 100 + "%", backgroundColor: __props.intervention.rendimientoTP < 0 ? "firebrick" : "darkgreen" })}"></div><div class="info_vtext">`);
-      _push(ssrRenderComponent(_component_spam, null, {
+      _push(`</th><td class="info_table_td" style="${serverRenderer.exports.ssrRenderStyle({ color: __props.intervention.gastoTP > 100 ? "firebrick" : "" })}">${serverRenderer.exports.ssrInterpolate(parseFloat(__props.intervention.gastoTP).toFixed(0))}%</td><td class="bar_craddle bar_width"><div class="bar_indicator" style="${serverRenderer.exports.ssrRenderStyle({ backgroundColor: Math.abs(__props.intervention.rendimientoTP) < __props.intervention.desviacionMaxima ? "#6176D4" : __props.intervention.rendimiento > 1 ? "darkgreen" : "firebrick", width: (__props.intervention.gastoTP > 100 ? 100 : __props.intervention.gastoTP) + "%" })}">\xA0</div><div class="bar_overflow" style="${serverRenderer.exports.ssrRenderStyle({ width: (__props.intervention.gastoTP > 100 ? (__props.intervention.gastoTP - 100) / __props.intervention.gastoTP * 100 : 0) + "%" })}">\xA0</div></td><td class="bar_craddle" style="${serverRenderer.exports.ssrRenderStyle({ "background-color": "#888" })}"><div class="bar_vindicator" style="${serverRenderer.exports.ssrRenderStyle({ height: Math.abs(__props.intervention.rendimientoTP) * 100 + "%", backgroundColor: __props.intervention.rendimientoTP < 0 ? "firebrick" : "darkgreen" })}"></div><div class="info_vtext">`);
+      _push(serverRenderer.exports.ssrRenderComponent(_component_spam, null, {
         default: vue_cjs_prod.withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`${ssrInterpolate(Math.abs(__props.intervention.rendimientoTP) == 1 ? "!!" : Math.round(__props.intervention.rendimientoTP * 100))}`);
+            _push2(`${serverRenderer.exports.ssrInterpolate(Math.abs(__props.intervention.rendimientoTP) == 1 ? "!!" : Math.round(__props.intervention.rendimientoTP * 100))}`);
           } else {
             return [
               vue_cjs_prod.createTextVNode(vue_cjs_prod.toDisplayString(Math.abs(__props.intervention.rendimientoTP) == 1 ? "!!" : Math.round(__props.intervention.rendimientoTP * 100)), 1)
@@ -3507,16 +3508,16 @@ const _sfc_main$4 = {
         }),
         _: 1
       }, _parent));
-      _push(`</div></td><td class="info_table_td">${ssrInterpolate(__props.intervention.gasto.toFixed(0))}\u20AC</td><td class="info_table_td">${ssrInterpolate(__props.intervention.presupuesto.toFixed(0))}\u20AC</td><td class="info_table_td">\xA0</td><td>\xA0</td></tr><tr><th class="info_table_col1">`);
-      _push(ssrRenderComponent(_component_font_awesome_icon, {
+      _push(`</div></td><td class="info_table_td">${serverRenderer.exports.ssrInterpolate(__props.intervention.gasto.toFixed(0))}\u20AC</td><td class="info_table_td">${serverRenderer.exports.ssrInterpolate(__props.intervention.presupuesto.toFixed(0))}\u20AC</td><td class="info_table_td">\xA0</td><td>\xA0</td></tr><tr><th class="info_table_col1">`);
+      _push(serverRenderer.exports.ssrRenderComponent(_component_font_awesome_icon, {
         class: "info_table_icon",
         icon: ["far", "fa-clock"]
       }, null, _parent));
-      _push(`<i class="far fa-clock info_table_icon"></i></th><td class="info_table_td" style="${ssrRenderStyle({ color: __props.intervention.gastoTP > 100 ? "firebrick" : "" })}">${ssrInterpolate(parseFloat(__props.intervention.diasConsumidosTP).toFixed(0))}%</td><td class="bar_craddle bar_width"><div class="bar_indicator" style="${ssrRenderStyle({ backgroundColor: __props.intervention.velocidadTP < -__props.intervention.desviacionMaxima ? "firebrick" : __props.intervention.velocidadTP > __props.intervention.desviacionMaxima ? "darkgreen" : "#6176D4", width: (__props.intervention.diasConsumidosTP > 100 ? 100 : __props.intervention.diasConsumidosTP) + "%" })}">\xA0</div><div class="bar_overflow" style="${ssrRenderStyle({ width: (__props.intervention.diasConsumidosTP > 100 ? (__props.intervention.diasConsumidosTP - 100) / __props.intervention.diasConsumidosTP * 100 : 0) + "%" })}">\xA0</div></td><td class="bar_craddle" style="${ssrRenderStyle({ "background-color": "#888" })}"><div class="bar_vindicator" style="${ssrRenderStyle({ height: Math.abs(__props.intervention.velocidadTP) * 100 + "%", backgroundColor: __props.intervention.velocidad < 1 ? "firebrick" : "darkgreen" })}"></div><div class="info_vtext">`);
-      _push(ssrRenderComponent(_component_spam, null, {
+      _push(`<i class="far fa-clock info_table_icon"></i></th><td class="info_table_td" style="${serverRenderer.exports.ssrRenderStyle({ color: __props.intervention.gastoTP > 100 ? "firebrick" : "" })}">${serverRenderer.exports.ssrInterpolate(parseFloat(__props.intervention.diasConsumidosTP).toFixed(0))}%</td><td class="bar_craddle bar_width"><div class="bar_indicator" style="${serverRenderer.exports.ssrRenderStyle({ backgroundColor: __props.intervention.velocidadTP < -__props.intervention.desviacionMaxima ? "firebrick" : __props.intervention.velocidadTP > __props.intervention.desviacionMaxima ? "darkgreen" : "#6176D4", width: (__props.intervention.diasConsumidosTP > 100 ? 100 : __props.intervention.diasConsumidosTP) + "%" })}">\xA0</div><div class="bar_overflow" style="${serverRenderer.exports.ssrRenderStyle({ width: (__props.intervention.diasConsumidosTP > 100 ? (__props.intervention.diasConsumidosTP - 100) / __props.intervention.diasConsumidosTP * 100 : 0) + "%" })}">\xA0</div></td><td class="bar_craddle" style="${serverRenderer.exports.ssrRenderStyle({ "background-color": "#888" })}"><div class="bar_vindicator" style="${serverRenderer.exports.ssrRenderStyle({ height: Math.abs(__props.intervention.velocidadTP) * 100 + "%", backgroundColor: __props.intervention.velocidad < 1 ? "firebrick" : "darkgreen" })}"></div><div class="info_vtext">`);
+      _push(serverRenderer.exports.ssrRenderComponent(_component_spam, null, {
         default: vue_cjs_prod.withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`${ssrInterpolate(Math.abs(__props.intervention.velocidadTP) == 1 ? "!!" : Math.round(__props.intervention.velocidadTP * 100))}`);
+            _push2(`${serverRenderer.exports.ssrInterpolate(Math.abs(__props.intervention.velocidadTP) == 1 ? "!!" : Math.round(__props.intervention.velocidadTP * 100))}`);
           } else {
             return [
               vue_cjs_prod.createTextVNode(vue_cjs_prod.toDisplayString(Math.abs(__props.intervention.velocidadTP) == 1 ? "!!" : Math.round(__props.intervention.velocidadTP * 100)), 1)
@@ -3525,7 +3526,7 @@ const _sfc_main$4 = {
         }),
         _: 1
       }, _parent));
-      _push(`</div></td><td class="info_table_td">${ssrInterpolate(__props.intervention.diasConsumidosPositivos)}d\xEDas</td><td class="info_table_td">${ssrInterpolate(__props.intervention.diasTotales)}d\xEDas</td><td class="info_table_td">\xA0</td><td>\xA0</td></tr><tr class="info_table_foot"><th style="${ssrRenderStyle({ "cursor": "pointer" })}"></th><td colspan="2">CONSUMO</td><td>R</td><td>ACTUAL</td><td>PREVISTO</td><td colspan="2" class="ring_column">PROGRESO</td></tr></tbody></table><div class="ring_indicator" style="${ssrRenderStyle({ background: "conic-gradient( " + (__props.intervention.desviacion < -__props.intervention.desviacionMaxima ? "firebrick" : __props.intervention.desviacion > __props.intervention.desviacionMaxima ? "darkgreen" : "#6176D4") + " 0deg " + 360 * __props.intervention.progreso + "deg, darkgray " + 360 * __props.intervention.progreso + "deg 360deg )" })}"><div class="ring_indicator_hole" style="${ssrRenderStyle({ color: __props.intervention.desviacion < -__props.intervention.desviacionMaxima ? "firebrick" : __props.intervention.desviacion > __props.intervention.desviacionMaxima ? "darkgreen" : "#6176D4" })}">${ssrInterpolate(parseFloat(__props.intervention.progresoTP).toFixed(0))}<span class="ring_indicator_percent">%</span></div></div></div></div><div class="pad_expander" style="${ssrRenderStyle({ "display": expanderDisplay.value, "textAlign": "left" })}"><div style="${ssrRenderStyle({ "padding": "10px" })}"><br><b>\xE1rea de informaci\xF3n extendida</b><br><br> progreso:${ssrInterpolate(__props.intervention.progreso.toFixed(2))} <br> progresoTP:${ssrInterpolate(__props.intervention.progresoTP.toFixed(2))}% <br><br> presupuesto:${ssrInterpolate(__props.intervention.presupuesto.toFixed(2))}\u20AC <br> gasto:${ssrInterpolate(__props.intervention.gasto.toFixed(2))}\u20AC <br> gastoTP:${ssrInterpolate(__props.intervention.gastoTP.toFixed(2))}% <br> rendimiento:${ssrInterpolate(__props.intervention.rendimiento.toFixed(2))} (${ssrInterpolate(__props.intervention.rendimientoTP.toFixed(2))}%) = ProgresoTP / GastoTP <br> rendimientoTP:${ssrInterpolate(__props.intervention.rendimientoTP.toFixed(2))}% ( Rendimiento - 1 ) <br><br> velocidad:<b>${ssrInterpolate(__props.intervention.velocidad.toFixed(2))}</b> = ProgresoTP / DiasConsumidosTP <br> velocidadTP:${ssrInterpolate(__props.intervention.velocidadTP.toFixed(2))}% <br> diasTotales:${ssrInterpolate(__props.intervention.diasTotales)}d\xEDas <br> diasConsumidos:${ssrInterpolate(__props.intervention.diasConsumidos)}d\xEDas <br> diasConsumidosTP:${ssrInterpolate(__props.intervention.diasConsumidosTP.toFixed(2))}% <br> diasConsumidosPositivos:${ssrInterpolate(__props.intervention.diasConsumidosPositivos)}d\xEDas <br><br> desviacionMaxima = ${ssrInterpolate(__props.intervention.desviacionMaxima)} <br> Desviaci\xF3n: (${ssrInterpolate(__props.intervention.rendimientoTP.toFixed(2))} | $${ssrInterpolate(__props.intervention.velocidadTP.toFixed(2))}) ${ssrInterpolate(__props.intervention.desviacion.toFixed(2))} <br> .desviacion &lt; -.desviacionMaxima? &#39;firebrick&#39; <br><br> rendimientoTP:${ssrInterpolate(__props.intervention.rendimientoTP.toFixed(2))}% ( Rendimiento - 1 ) <br> velocidadTP:${ssrInterpolate(__props.intervention.velocidadTP.toFixed(2))}% <br></div></div></div>`);
+      _push(`</div></td><td class="info_table_td">${serverRenderer.exports.ssrInterpolate(__props.intervention.diasConsumidosPositivos)}d\xEDas</td><td class="info_table_td">${serverRenderer.exports.ssrInterpolate(__props.intervention.diasTotales)}d\xEDas</td><td class="info_table_td">\xA0</td><td>\xA0</td></tr><tr class="info_table_foot"><th style="${serverRenderer.exports.ssrRenderStyle({ "cursor": "pointer" })}"></th><td colspan="2">CONSUMO</td><td>R</td><td>ACTUAL</td><td>PREVISTO</td><td colspan="2" class="ring_column">PROGRESO</td></tr></tbody></table><div class="ring_indicator" style="${serverRenderer.exports.ssrRenderStyle({ background: "conic-gradient( " + (__props.intervention.desviacion < -__props.intervention.desviacionMaxima ? "firebrick" : __props.intervention.desviacion > __props.intervention.desviacionMaxima ? "darkgreen" : "#6176D4") + " 0deg " + 360 * __props.intervention.progreso + "deg, darkgray " + 360 * __props.intervention.progreso + "deg 360deg )" })}"><div class="ring_indicator_hole" style="${serverRenderer.exports.ssrRenderStyle({ color: __props.intervention.desviacion < -__props.intervention.desviacionMaxima ? "firebrick" : __props.intervention.desviacion > __props.intervention.desviacionMaxima ? "darkgreen" : "#6176D4" })}">${serverRenderer.exports.ssrInterpolate(parseFloat(__props.intervention.progresoTP).toFixed(0))}<span class="ring_indicator_percent">%</span></div></div></div></div><div class="pad_expander" style="${serverRenderer.exports.ssrRenderStyle({ "display": expanderDisplay.value, "textAlign": "left" })}"><div style="${serverRenderer.exports.ssrRenderStyle({ "padding": "10px" })}"><br><b>\xE1rea de informaci\xF3n extendida</b><br><br> progreso:${serverRenderer.exports.ssrInterpolate(__props.intervention.progreso.toFixed(2))} <br> progresoTP:${serverRenderer.exports.ssrInterpolate(__props.intervention.progresoTP.toFixed(2))}% <br><br> presupuesto:${serverRenderer.exports.ssrInterpolate(__props.intervention.presupuesto.toFixed(2))}\u20AC <br> gasto:${serverRenderer.exports.ssrInterpolate(__props.intervention.gasto.toFixed(2))}\u20AC <br> gastoTP:${serverRenderer.exports.ssrInterpolate(__props.intervention.gastoTP.toFixed(2))}% <br> rendimiento:${serverRenderer.exports.ssrInterpolate(__props.intervention.rendimiento.toFixed(2))} (${serverRenderer.exports.ssrInterpolate(__props.intervention.rendimientoTP.toFixed(2))}%) = ProgresoTP / GastoTP <br> rendimientoTP:${serverRenderer.exports.ssrInterpolate(__props.intervention.rendimientoTP.toFixed(2))}% ( Rendimiento - 1 ) <br><br> velocidad:<b>${serverRenderer.exports.ssrInterpolate(__props.intervention.velocidad.toFixed(2))}</b> = ProgresoTP / DiasConsumidosTP <br> velocidadTP:${serverRenderer.exports.ssrInterpolate(__props.intervention.velocidadTP.toFixed(2))}% <br> diasTotales:${serverRenderer.exports.ssrInterpolate(__props.intervention.diasTotales)}d\xEDas <br> diasConsumidos:${serverRenderer.exports.ssrInterpolate(__props.intervention.diasConsumidos)}d\xEDas <br> diasConsumidosTP:${serverRenderer.exports.ssrInterpolate(__props.intervention.diasConsumidosTP.toFixed(2))}% <br> diasConsumidosPositivos:${serverRenderer.exports.ssrInterpolate(__props.intervention.diasConsumidosPositivos)}d\xEDas <br><br> desviacionMaxima = ${serverRenderer.exports.ssrInterpolate(__props.intervention.desviacionMaxima)} <br> Desviaci\xF3n: (${serverRenderer.exports.ssrInterpolate(__props.intervention.rendimientoTP.toFixed(2))} | $${serverRenderer.exports.ssrInterpolate(__props.intervention.velocidadTP.toFixed(2))}) ${serverRenderer.exports.ssrInterpolate(__props.intervention.desviacion.toFixed(2))} <br> .desviacion &lt; -.desviacionMaxima? &#39;firebrick&#39; <br><br> rendimientoTP:${serverRenderer.exports.ssrInterpolate(__props.intervention.rendimientoTP.toFixed(2))}% ( Rendimiento - 1 ) <br> velocidadTP:${serverRenderer.exports.ssrInterpolate(__props.intervention.velocidadTP.toFixed(2))}% <br></div></div></div>`);
     };
   }
 };
@@ -3548,8 +3549,8 @@ const _sfc_main$3 = {
     });
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
-      ssrRenderList(proyectos.value, (intervention) => {
-        _push(ssrRenderComponent(_sfc_main$4, {
+      serverRenderer.exports.ssrRenderList(proyectos.value, (intervention) => {
+        _push(serverRenderer.exports.ssrRenderComponent(_sfc_main$4, {
           intervention,
           key: intervention.id
         }, null, _parent));
@@ -3564,7 +3565,6 @@ _sfc_main$3.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/ScopIntervenciones_map.vue");
   return _sfc_setup$3 ? _sfc_setup$3(props, ctx) : void 0;
 };
-const NodeItem_vue_vue_type_style_index_0_lang = "";
 const _sfc_main$2 = {
   __name: "NodeItem",
   __ssrInlineRender: true,
@@ -3575,22 +3575,22 @@ const _sfc_main$2 = {
     vue_cjs_prod.ref("none");
     return (_ctx, _push, _parent, _attrs) => {
       const _component_font_awesome_icon = vue_cjs_prod.resolveComponent("font-awesome-icon");
-      _push(`<div${ssrRenderAttrs(vue_cjs_prod.mergeProps({ class: "item_pad" }, _attrs))}><div style="${ssrRenderStyle({ "margin-right": "50px" })}"><div class="small_title_gray">`);
-      _push(ssrRenderComponent(_component_font_awesome_icon, {
+      _push(`<div${serverRenderer.exports.ssrRenderAttrs(vue_cjs_prod.mergeProps({ class: "item_pad" }, _attrs))}><div style="${serverRenderer.exports.ssrRenderStyle({ "margin-right": "50px" })}"><div class="small_title_gray">`);
+      _push(serverRenderer.exports.ssrRenderComponent(_component_font_awesome_icon, {
         icon: ["fas", "fa-chevron-circle-right"],
         size: "xs",
         style: { "margin-right": "2px" }
       }, null, _parent));
-      _push(`${ssrInterpolate(__props.intervention.ambito)}</div><div class="main_small_title_gray">${ssrInterpolate(__props.intervention.nombre)}</div></div><div style="${ssrRenderStyle({ "display": "flex", "flex-direction": "column", "position": "absolute", "right": "22px", "top": "10%", "bottom": "10%" })}"><td class="bar_micro_craddle" style="${ssrRenderStyle({ "margin": "1px" })}"><div class="bar_indicator" style="${ssrRenderStyle({ backgroundColor: Math.abs(__props.intervention.rendimientoTP) < __props.intervention.desviacionMaxima ? "#6176D4" : __props.intervention.rendimiento > 1 ? "darkgreen" : "firebrick", width: (__props.intervention.gastoTP > 100 ? 100 : __props.intervention.gastoTP) + "%" })}">\xA0</div></td><td class="bar_micro_craddle" style="${ssrRenderStyle({ "margin": "1px" })}"><div class="bar_indicator" style="${ssrRenderStyle({ backgroundColor: __props.intervention.velocidadTP < -__props.intervention.desviacionMaxima ? "firebrick" : __props.intervention.velocidadTP > __props.intervention.desviacionMaxima ? "darkgreen" : "#6176D4", width: (__props.intervention.diasConsumidosTP > 100 ? 100 : __props.intervention.diasConsumidosTP) + "%" })}">\xA0</div></td><td class="bar_micro_craddle" style="${ssrRenderStyle({ "margin": "1px" })}"><div class="bar_indicator" style="${ssrRenderStyle({ backgroundColor: __props.intervention.desviacion < -__props.intervention.desviacionMaxima ? "firebrick" : __props.intervention.desviacion > __props.intervention.desviacionMaxima ? "darkgreen" : "#6176D4", width: (__props.intervention.progresoTP > 100 ? 100 : __props.intervention.progresoTP) + "%" })}">\xA0</div></td></div><div style="${ssrRenderStyle({ "display": "flex", "flex-direction": "column", "position": "absolute", "right": "4px", "top": "10%", "bottom": "10%" })}">`);
-      _push(ssrRenderComponent(_component_font_awesome_icon, {
+      _push(`${serverRenderer.exports.ssrInterpolate(__props.intervention.ambito)}</div><div class="main_small_title_gray">${serverRenderer.exports.ssrInterpolate(__props.intervention.nombre)}</div></div><div style="${serverRenderer.exports.ssrRenderStyle({ "display": "flex", "flex-direction": "column", "position": "absolute", "right": "22px", "top": "10%", "bottom": "10%" })}"><td class="bar_micro_craddle" style="${serverRenderer.exports.ssrRenderStyle({ "margin": "1px" })}"><div class="bar_indicator" style="${serverRenderer.exports.ssrRenderStyle({ backgroundColor: Math.abs(__props.intervention.rendimientoTP) < __props.intervention.desviacionMaxima ? "#6176D4" : __props.intervention.rendimiento > 1 ? "darkgreen" : "firebrick", width: (__props.intervention.gastoTP > 100 ? 100 : __props.intervention.gastoTP) + "%" })}">\xA0</div></td><td class="bar_micro_craddle" style="${serverRenderer.exports.ssrRenderStyle({ "margin": "1px" })}"><div class="bar_indicator" style="${serverRenderer.exports.ssrRenderStyle({ backgroundColor: __props.intervention.velocidadTP < -__props.intervention.desviacionMaxima ? "firebrick" : __props.intervention.velocidadTP > __props.intervention.desviacionMaxima ? "darkgreen" : "#6176D4", width: (__props.intervention.diasConsumidosTP > 100 ? 100 : __props.intervention.diasConsumidosTP) + "%" })}">\xA0</div></td><td class="bar_micro_craddle" style="${serverRenderer.exports.ssrRenderStyle({ "margin": "1px" })}"><div class="bar_indicator" style="${serverRenderer.exports.ssrRenderStyle({ backgroundColor: __props.intervention.desviacion < -__props.intervention.desviacionMaxima ? "firebrick" : __props.intervention.desviacion > __props.intervention.desviacionMaxima ? "darkgreen" : "#6176D4", width: (__props.intervention.progresoTP > 100 ? 100 : __props.intervention.progresoTP) + "%" })}">\xA0</div></td></div><div style="${serverRenderer.exports.ssrRenderStyle({ "display": "flex", "flex-direction": "column", "position": "absolute", "right": "4px", "top": "10%", "bottom": "10%" })}">`);
+      _push(serverRenderer.exports.ssrRenderComponent(_component_font_awesome_icon, {
         style: { "margin": "1", "opacity": ".4", "height": "16px" },
         icon: ["fas", "fa-euro-sign"]
       }, null, _parent));
-      _push(ssrRenderComponent(_component_font_awesome_icon, {
+      _push(serverRenderer.exports.ssrRenderComponent(_component_font_awesome_icon, {
         style: { "margin": "1", "opacity": ".4", "height": "16px" },
         icon: ["far", "fa-clock"]
       }, null, _parent));
-      _push(ssrRenderComponent(_component_font_awesome_icon, {
+      _push(serverRenderer.exports.ssrRenderComponent(_component_font_awesome_icon, {
         style: { "margin": "1", "opacity": ".4", "height": "16px" },
         icon: ["fas", "fa-power-off"]
       }, null, _parent));
@@ -3615,8 +3615,8 @@ const _sfc_main$1 = {
     });
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
-      ssrRenderList(proyectos.value, (intervention) => {
-        _push(ssrRenderComponent(_sfc_main$2, {
+      serverRenderer.exports.ssrRenderList(proyectos.value, (intervention) => {
+        _push(serverRenderer.exports.ssrRenderComponent(_sfc_main$2, {
           intervention,
           key: intervention.id
         }, null, _parent));
@@ -3631,17 +3631,16 @@ _sfc_main$1.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/Proyectos_list.vue");
   return _sfc_setup$1 ? _sfc_setup$1(props, ctx) : void 0;
 };
-const app_vue_vue_type_style_index_0_lang = "";
 const _sfc_main = {
   __name: "app",
   __ssrInlineRender: true,
   setup(__props) {
     return (_ctx, _push, _parent, _attrs) => {
-      _push(`<section${ssrRenderAttrs(vue_cjs_prod.mergeProps({ class: "container" }, _attrs))}><div class="app-layout"><div class="app-header"><div class="pad-header"><div class="header-title" style="${ssrRenderStyle({ "bottom": "14px", "text-align": "center" })}"> Proyectator - Mapa de Proyectos (versi\xF3n usuarios avanzados PMO) </div></div><div style="${ssrRenderStyle({ "position": "absolute", "left": "0px", "right": "0px", "bottom": "0px", "top": "40px", "text-align": "center", "background-color": "#eeeeee", "color": "#999999", "padding-top": "10px" })}"> controles de aplicaci\xF3n </div></div><div class="context-controls"><div class="craddle"><span class="pad-title">Perspectiva</span><div class="pad" style="${ssrRenderStyle({ "top": "30px", "bottom": "30px" })}"><br><span style="${ssrRenderStyle({ "color": "silver" })}">controles de perspectiva</span></div></div></div><div class="context-selector"><div class="craddle"><span class="pad-title">Proyectos</span><div style="${ssrRenderStyle({ "position": "absolute", "top": "40px", "bottom": "40px", "overflow": "auto" })}">`);
-      _push(ssrRenderComponent(_sfc_main$1, null, null, _parent));
+      _push(`<section${serverRenderer.exports.ssrRenderAttrs(vue_cjs_prod.mergeProps({ class: "container" }, _attrs))}><div class="app-layout"><div class="app-header"><div class="pad-header"><div class="header-title" style="${serverRenderer.exports.ssrRenderStyle({ "bottom": "14px", "text-align": "center" })}"> Proyectator - Mapa de Proyectos (versi\xF3n usuarios avanzados PMO) </div></div><div style="${serverRenderer.exports.ssrRenderStyle({ "position": "absolute", "left": "0px", "right": "0px", "bottom": "0px", "top": "40px", "text-align": "center", "background-color": "#eeeeee", "color": "#999999", "padding-top": "10px" })}"> controles de aplicaci\xF3n </div></div><div class="context-controls"><div class="craddle"><span class="pad-title">Perspectiva</span><div class="pad" style="${serverRenderer.exports.ssrRenderStyle({ "top": "30px", "bottom": "30px" })}"><br><span style="${serverRenderer.exports.ssrRenderStyle({ "color": "silver" })}">controles de perspectiva</span></div></div></div><div class="context-selector"><div class="craddle"><span class="pad-title">Proyectos</span><div style="${serverRenderer.exports.ssrRenderStyle({ "position": "absolute", "top": "40px", "bottom": "40px", "overflow": "auto" })}">`);
+      _push(serverRenderer.exports.ssrRenderComponent(_sfc_main$1, null, null, _parent));
       _push(`</div></div></div><div class="map">`);
-      _push(ssrRenderComponent(_sfc_main$3, null, null, _parent));
-      _push(`</div><div class="selection-info"><div class="craddle"><span class="pad-title">Detalle</span><div class="pad" style="${ssrRenderStyle({ "top": "30px", "bottom": "30px" })}">informaci\xF3n del elemento seleccionado</div></div></div></div></section>`);
+      _push(serverRenderer.exports.ssrRenderComponent(_sfc_main$3, null, null, _parent));
+      _push(`</div><div class="selection-info"><div class="craddle"><span class="pad-title">Detalle</span><div class="pad" style="${serverRenderer.exports.ssrRenderStyle({ "top": "30px", "bottom": "30px" })}">informaci\xF3n del elemento seleccionado</div></div></div></div></section>`);
     };
   }
 };
@@ -3674,9 +3673,6 @@ const plugins = normalizePlugins(_plugins);
   };
 }
 const entry$1 = (ctx) => entry(ctx);
-export {
-  __nuxt_component_0 as _,
-  entry$1 as default,
-  useHead as u,
-  vue_cjs_prod as v
-};
+
+export { __nuxt_component_0 as _, entry$1 as default, useHead as u, vue_cjs_prod as v };
+//# sourceMappingURL=server.mjs.map
