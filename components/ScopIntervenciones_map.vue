@@ -2,9 +2,10 @@
     import { ref, watchEffect } from 'vue';
     import NodeX from './ScopNodeX.vue'
 
-    const API_URL = 'https://localhost:5001/Proyectos';
-    API_URL = 'https://scop.santalucia.cc:5001/Proyectos';
-    API_URL = 'https://79.116.10.59:5001/Proyectos';
+    const API_URL = 'https://api-scop.azurewebsites.net/Proyectos';
+    //const API_URL = 'https://localhost:5001/Proyectos';
+    //API_URL = 'https://scop.santalucia.cc:5001/Proyectos';
+    //API_URL = 'https://79.116.10.59:5001/Proyectos';
     
     const proyectos = ref(null);
 

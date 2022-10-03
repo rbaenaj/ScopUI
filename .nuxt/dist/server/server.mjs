@@ -3413,7 +3413,7 @@ const _sfc_main$5 = {
   __name: "nuxt-root",
   __ssrInlineRender: true,
   setup(__props) {
-    const ErrorComponent = vue_cjs_prod.defineAsyncComponent(() => import("./_nuxt/error-component.a6e8379b.js"));
+    const ErrorComponent = vue_cjs_prod.defineAsyncComponent(() => import("./_nuxt/error-component.e39a31e4.js"));
     const nuxtApp = useNuxtApp();
     vue_cjs_prod.provide("_route", useRoute());
     nuxtApp.hooks.callHookWith((hooks) => hooks.map((hook) => hook()), "vue:setup");
@@ -3539,9 +3539,7 @@ const _sfc_main$3 = {
   __name: "ScopIntervenciones_map",
   __ssrInlineRender: true,
   setup(__props) {
-    const API_URL = "https://localhost:5001/Proyectos";
-    API_URL = "https://scop.santalucia.cc:5001/Proyectos";
-    API_URL = "https://79.116.10.59:5001/Proyectos";
+    const API_URL = "https://api-scop.azurewebsites.net/Proyectos";
     const proyectos = vue_cjs_prod.ref(null);
     vue_cjs_prod.watchEffect(async () => {
       proyectos.value = await (await fetch(API_URL)).json();
@@ -3608,7 +3606,7 @@ const _sfc_main$1 = {
   __name: "Proyectos_list",
   __ssrInlineRender: true,
   setup(__props) {
-    const API_URL = "https://localhost:5001/Proyectos";
+    const API_URL = "https://api-scop.azurewebsites.net/Proyectos";
     const proyectos = vue_cjs_prod.ref(null);
     vue_cjs_prod.watchEffect(async () => {
       proyectos.value = await (await fetch(API_URL)).json();

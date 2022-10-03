@@ -1,19 +1,31 @@
-import { v as vue_cjs_prod } from "../server.mjs";
-import { ssrRenderComponent } from "@vue/server-renderer";
-import "@vue/compiler-dom";
-import "@vue/runtime-dom";
-import "ohmyfetch";
-import "ufo";
-import "#internal/nitro";
-import "hookable";
-import "unctx";
-import "destr";
-import "h3";
-import "defu";
-import "@fortawesome/fontawesome-svg-core";
-import "@fortawesome/vue-fontawesome";
-import "@fortawesome/free-solid-svg-icons";
-import "@fortawesome/free-regular-svg-icons";
+import { v as vue_cjs_prod } from './server.mjs';
+import { s as serverRenderer } from './renderer.mjs';
+import 'unenv/runtime/mock/proxy';
+import 'ohmyfetch';
+import 'ufo';
+import 'hookable';
+import 'unctx';
+import 'h3';
+import 'defu';
+import '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/vue-fontawesome';
+import '@fortawesome/free-solid-svg-icons';
+import '@fortawesome/free-regular-svg-icons';
+import './node-server.mjs';
+import 'node-fetch-native/polyfill';
+import 'http';
+import 'https';
+import 'destr';
+import 'radix3';
+import 'unenv/runtime/fetch/index';
+import 'scule';
+import 'ohash';
+import 'unstorage';
+import 'fs';
+import 'pathe';
+import 'url';
+import 'stream';
+
 const _sfc_main = {
   __name: "nuxt-error-page",
   __ssrInlineRender: true,
@@ -36,11 +48,11 @@ const _sfc_main = {
     const statusMessage = (_a = error.statusMessage) != null ? _a : is404 ? "Page Not Found" : "Internal Server Error";
     const description = error.message || error.toString();
     const stack = void 0;
-    const _Error404 = vue_cjs_prod.defineAsyncComponent(() => import("./error-404.27c5ab36.js"));
-    const _Error = vue_cjs_prod.defineAsyncComponent(() => import("./error-500.e7f0cbbe.js"));
+    const _Error404 = vue_cjs_prod.defineAsyncComponent(() => import('./error-404.a3e47572.mjs'));
+    const _Error = vue_cjs_prod.defineAsyncComponent(() => import('./error-500.45b17a13.mjs'));
     const ErrorTemplate = is404 ? _Error404 : _Error;
     return (_ctx, _push, _parent, _attrs) => {
-      _push(ssrRenderComponent(vue_cjs_prod.unref(ErrorTemplate), vue_cjs_prod.mergeProps({ statusCode: vue_cjs_prod.unref(statusCode), statusMessage: vue_cjs_prod.unref(statusMessage), description: vue_cjs_prod.unref(description), stack: vue_cjs_prod.unref(stack) }, _attrs), null, _parent));
+      _push(serverRenderer.exports.ssrRenderComponent(vue_cjs_prod.unref(ErrorTemplate), vue_cjs_prod.mergeProps({ statusCode: vue_cjs_prod.unref(statusCode), statusMessage: vue_cjs_prod.unref(statusMessage), description: vue_cjs_prod.unref(description), stack: vue_cjs_prod.unref(stack) }, _attrs), null, _parent));
     };
   }
 };
@@ -51,6 +63,6 @@ _sfc_main.setup = (props, ctx) => {
   return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
 };
 const _sfc_main$1 = _sfc_main;
-export {
-  _sfc_main$1 as default
-};
+
+export { _sfc_main$1 as default };
+//# sourceMappingURL=error-component.e39a31e4.mjs.map

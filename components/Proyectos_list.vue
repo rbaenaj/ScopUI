@@ -2,7 +2,8 @@
     import { ref, watchEffect } from 'vue';
     import NodeItem from './NodeItem.vue'
 
-    const API_URL = 'https://localhost:5001/Proyectos';
+    const API_URL = 'https://api-scop.azurewebsites.net/Proyectos';
+    //const API_URL = 'https://localhost:5001/Proyectos';
     const proyectos = ref(null);
 
     watchEffect(async () => {
