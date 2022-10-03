@@ -71,15 +71,15 @@ const client_manifest = {
     "file": "error-500.08851880.css",
     "resourceType": "style"
   },
-  "node_modules/@nuxt/ui-templates/dist/templates/error-500.css": {
-    "resourceType": "style",
-    "file": "error-500.08851880.css",
-    "src": "node_modules/@nuxt/ui-templates/dist/templates/error-500.css"
-  },
   "node_modules/@nuxt/ui-templates/dist/templates/error-404.css": {
     "resourceType": "style",
     "file": "error-404.7729cee9.css",
     "src": "node_modules/@nuxt/ui-templates/dist/templates/error-404.css"
+  },
+  "node_modules/@nuxt/ui-templates/dist/templates/error-500.css": {
+    "resourceType": "style",
+    "file": "error-500.08851880.css",
+    "src": "node_modules/@nuxt/ui-templates/dist/templates/error-500.css"
   },
   "node_modules/nuxt/dist/app/entry.css": {
     "resourceType": "style",

@@ -339,56 +339,56 @@ const errorHandler = (async function errorhandler(error, event) {
 const assets = {
   "/manifest.json": {
     "type": "application/json",
-    "etag": "\"8d6-RmOVyYYV/tGnayUQug1Ekumwpxs\"",
-    "mtime": "2022-10-03T19:39:00.201Z",
+    "etag": "\"8d6-jOL62wmwOH6aFmLLqwjvSeTpLVk\"",
+    "mtime": "2022-10-03T20:15:25.360Z",
     "path": "../public/manifest.json"
   },
   "/_nuxt/entry.66c287a7.css": {
     "type": "text/css; charset=utf-8",
     "etag": "\"4f22-EXSFOBZ1tzaQF9/mJdqcfyds9Rs\"",
-    "mtime": "2022-10-03T19:39:00.208Z",
+    "mtime": "2022-10-03T20:15:25.373Z",
     "path": "../public/_nuxt/entry.66c287a7.css"
   },
   "/_nuxt/entry.68d5b0e6.mjs": {
     "type": "application/javascript",
     "etag": "\"132442-Dmox54mG6qXBHr+kfSOFqYXTGcg\"",
-    "mtime": "2022-10-03T19:39:00.209Z",
+    "mtime": "2022-10-03T20:15:25.370Z",
     "path": "../public/_nuxt/entry.68d5b0e6.mjs"
   },
   "/_nuxt/error-404.7729cee9.css": {
     "type": "text/css; charset=utf-8",
     "etag": "\"e34-qomFKLEnDzFbIPwCfuxqIb18mQU\"",
-    "mtime": "2022-10-03T19:39:00.209Z",
+    "mtime": "2022-10-03T20:15:25.371Z",
     "path": "../public/_nuxt/error-404.7729cee9.css"
   },
   "/_nuxt/error-404.fa72297f.mjs": {
     "type": "application/javascript",
     "etag": "\"8da-eBSygD5oytvkh81P9khKHmxLAXw\"",
-    "mtime": "2022-10-03T19:39:00.207Z",
+    "mtime": "2022-10-03T20:15:25.371Z",
     "path": "../public/_nuxt/error-404.fa72297f.mjs"
   },
   "/_nuxt/error-500.08851880.css": {
     "type": "text/css; charset=utf-8",
     "etag": "\"7a4-PsPGHWWrltFH34P9Q5DnkUTUhRE\"",
-    "mtime": "2022-10-03T19:39:00.208Z",
+    "mtime": "2022-10-03T20:15:25.372Z",
     "path": "../public/_nuxt/error-500.08851880.css"
   },
   "/_nuxt/error-500.be89bf1e.mjs": {
     "type": "application/javascript",
     "etag": "\"788-DBc0OIiRRTLAaWpKO3V8gyw5iSE\"",
-    "mtime": "2022-10-03T19:39:00.209Z",
+    "mtime": "2022-10-03T20:15:25.370Z",
     "path": "../public/_nuxt/error-500.be89bf1e.mjs"
   },
   "/_nuxt/error-component.02ddde18.mjs": {
     "type": "application/javascript",
     "etag": "\"4ad-qTmvqakJU0DkVu2eWd8piIxT2SM\"",
-    "mtime": "2022-10-03T19:39:00.207Z",
+    "mtime": "2022-10-03T20:15:25.369Z",
     "path": "../public/_nuxt/error-component.02ddde18.mjs"
   },
   "/_nuxt/_plugin-vue_export-helper.7287ed4b.mjs": {
     "type": "application/javascript",
     "etag": "\"5b-eFCz/UrraTh721pgAl0VxBNR1es\"",
-    "mtime": "2022-10-03T19:39:00.207Z",
+    "mtime": "2022-10-03T20:15:25.369Z",
     "path": "../public/_nuxt/_plugin-vue_export-helper.7287ed4b.mjs"
   }
 };
